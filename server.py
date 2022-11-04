@@ -8,14 +8,6 @@ from client import Authentication
 logging.basicConfig(level='WARNING', filename='mylog.log')
 logger = logging.getLogger()
 
-"""
-nickname - ... установить ник
-public - вход в публичный чат
-report to ... - жалоба
-private - massage to ..  - приватное сообщение
-timer ... '%Y, %m, %d, %H, %M, %S' - сообщение через определенное время
-"""
-
 
 class Server:
     def __init__(self, host: str = "127.0.0.1", port: int = 8000) -> None:
