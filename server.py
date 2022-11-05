@@ -1,16 +1,14 @@
 import asyncio
-import logging
+from logs import logger
 import threading
 from asyncio import StreamReader, StreamWriter
 from datetime import datetime
 from client import Authentication
-
-logging.basicConfig(level='WARNING', filename='mylog.log')
-logger = logging.getLogger()
+from settings import HOST, PORT
 
 
 class Server:
-    def __init__(self, host: str = "127.0.0.1", port: int = 8000) -> None:
+    def __init__(self, host: str = HOST, port: int = PORT) -> None:
         self.host = host
         self.port = port
         self.public = []
@@ -20,13 +18,12 @@ class Server:
         try:
             server = await asyncio.start_server(self.authentication, self.host, self.port)
             addr = server.sockets[0].getsockname()
-            print(f'Serving on {addr}')
             logger.warning(f'Start server on {addr}')
-
             async with server:
                 await server.serve_forever()
-        except Exception:
-            pass
+        except Exception as e:
+            logger.exception(e)
+            raise e
 
     async def authentication(self, reader: StreamReader, writer: StreamWriter) -> None:
         logger.warning('Authentification user')

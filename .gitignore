@@ -3,3 +3,6 @@
 __pycache__/
 *.pyc
 /mylog.log
+/mylog.log.1
+/mylog.log.2
+/.env

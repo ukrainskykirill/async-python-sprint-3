@@ -1,9 +1,15 @@
 aioconsole==0.5.1
 attrs==22.1.0
+direnv==2020.12.3
+env-file==2020.12.3
 exceptiongroup==1.0.0
 iniconfig==1.1.1
 packaging==21.3
 pluggy==1.0.0
 pyparsing==3.0.9
 pytest==7.2.0
+pytest-asyncio==0.20.1
+python-dotenv==0.21.0
 tomli==2.0.1
+typing_extensions==4.4.0
+values==2020.12.3

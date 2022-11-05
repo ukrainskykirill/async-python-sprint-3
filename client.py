@@ -1,10 +1,11 @@
 import asyncio
 from asyncio import StreamWriter, StreamReader
 from aioconsole import ainput
+from settings import HOST, PORT
 
 
 class Client:
-    def __init__(self, server_host: str = "127.0.0.1", server_port: int = 8000) -> None:
+    def __init__(self, server_host: str = HOST, server_port: int = PORT) -> None:
         self.server_host = server_host
         self.server_port = server_port
 
@@ -36,8 +37,6 @@ class Authentication:
     def __init__(self, reader: StreamReader, writer: StreamWriter, reports: int = 0) -> None:
         self.reader = reader
         self.writer = writer
-        self.ip = str(writer.get_extra_info('peername'))[0]
-        self.port = str(writer.get_extra_info('peername'))[1]
         self.reports = reports
         self.nickname = 'bot'
         self.public = False
